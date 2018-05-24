@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>新闻中心</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-banner banner-ny-h" data-height='' style=''>
+            <div class="slick-slide">
+                <img class="cover-image" src="__StaticStyle__/img/banner14.jpg" sizes="(max-width: 767px) 767px" alt="新闻中心">
+            </div>
+        </div>
+        <section class="met-news animsition ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 met-news-body">
+                        <div class="row">
+                            <div class="met-news-list">
+                                <ul class="met-page-ajax" data-scale=''>
+                                    {foreach $list as $v}
+                                    <li>
+                                        <h4>
+                                            <a href="{:url('index/newsDetail',['id'=>$v.id,'cate_id'=>$cate_id])}"​ title="{$v.title}"
+                                            target='_self'>
+                                                {$v.title}
+                                            </a>
+                                        </h4>
+                                        <p class="des">
+                                            {$v.content}
+                                        </p>
+                                        <p class="info">
+                                            <span>
+                                                <?=explode(' ',$v['create_time'])[0];?>
+                                            </span>
+                                            <span>
+                                                {$v.author}
+                                            </span>
+                                            <span>
+                                                <i class="icon wb-eye margin-right-5" aria-hidden="true">
+                                                </i>
+                                                {$v.view_count}
+                                            </span>
+                                        </p>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+                                <div class="pagination-wrap">
+                                    {$page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="met-news-bar">
+                                <form name="formsearch" action="{:url('index/news')}">
+                                    <div class="form-group">
+                                        <div class="input-search">
+                                            <button type="submit" class="input-search-btn">
+                                                <i class="icon wb-search" aria-hidden="true">
+                                                </i>
+                                            </button>
+                                            <input type="text" class="form-control" name="title" placeholder="Search">
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--string(4) "news" -->
+                                <div class="recommend news-list-md">
+                                    <h3>
+                                        为您推荐
+                                    </h3>
+                                    <ul class="list-group list-group-bordered">
+                                        {foreach $recommend as $v}
+                                        <li class="list-group-item">
+                                            <a href="{:url('index/newsDetail',['id'=>$v.id])}"​ title="{$v.title}"
+                                            target='_self'>
+                                                {$v.title}
+                                            </a>
+                                        </li>
+                                        {/foreach}
+
+                                    </ul>
+                                </div>
+                                <ul class="column">
+                                    <li>
+                                        <a href="{:url('index/news')}"​ title="所有文章" target='_self'>
+                                            所有文章
+                                        </a>
+                                    </li>
+                                    {foreach $newsCate as $v}
+                                    <li>
+                                        <a href="{:url('index/news',['cate_id'=>$v.id])}"​>
+                                            {$v.name}
+                                        </a>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {include file='public:footer'}
+    </body>
+
+</html>

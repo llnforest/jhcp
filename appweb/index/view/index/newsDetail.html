@@ -1,0 +1,119 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>{$newsInfo.title}</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <section class="met-shownews animsition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 met-shownews-body">
+                        <div class="row">
+                            <div class="met-shownews-header">
+                                <h1>
+                                    {$newsInfo.title}
+                                </h1>
+                                <div class="info">
+                                    <span>
+                                        {$newsInfo.create_time}
+                                    </span>
+                                    <span>
+                                        {$newsInfo.author}
+                                    </span>
+                                    <span>
+                                        <i class="icon wb-eye margin-right-5" aria-hidden="true">
+                                        </i>
+                                        {$newsInfo.view_count}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="met-editor lazyload clearfix">
+                                <div>
+                                   {$newsInfo.description}
+                                </div>
+                            </div>
+                            <div class="met-shownews-footer">
+                                <ul class="pager pager-round">
+                                    {if(!empty($prev))}
+                                    <li class='previous'>
+                                        <a href="{:url('index/newsDetail',['id'=>$prev.id,'cate_id'=>$cate_id])}">
+                                            上一篇
+                                            <span aria-hidden='true' class='hidden-xs'>
+                                                ：{$prev.title}
+                                            </span>
+                                        </a>
+                                    </li>
+                                    {/if}
+                                    {if(!empty($next))}
+                                    <li class='next'>
+                                        <a href="{:url('index/newsDetail',['id'=>$next.id,'cate_id'=>$cate_id])}">
+                                            下一篇
+                                            <span aria-hidden='true' class='hidden-xs'>
+                                                ：{$next.title}
+                                            </span>
+                                        </a>
+                                    </li>
+                                    {/if}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="met-news-bar">
+                                <form name="formsearch" action="#">
+                                    <input type="hidden" name="kwtype" value="0" />
+                                    <div class="form-group">
+                                        <div class="input-search">
+                                            <button type="submit" class="input-search-btn">
+                                                <i class="icon wb-search" aria-hidden="true">
+                                                </i>
+                                            </button>
+                                            <input type="text" class="form-control" name="q" placeholder="Search">
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--string(4) "news" -->
+                                <div class="recommend news-list-md">
+                                    <h3>
+                                        为您推荐
+                                    </h3>
+                                    <ul class="list-group list-group-bordered">
+                                        {foreach $recommend as $v}
+                                        <li class="list-group-item">
+                                            <a href="{:url('index/newsDetail',['id'=>$v.id])}"​ title="{$v.title}"
+                                            target='_self'>
+                                                {$v.title}
+                                            </a>
+                                        </li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                                <ul class="column">
+                                    <li>
+                                        <a href="{:url('index/news')}"​ title="所有文章" target='_self'>
+                                            所有文章
+                                        </a>
+                                    </li>
+                                    {foreach $newsCate as $v}
+                                    <li>
+                                        <a href="{:url('index/news',['cate_id'=>$v.id])}"​>
+                                            {$v.name}
+                                        </a>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {include file='public:footer'}
+    </body>
+
+</html>

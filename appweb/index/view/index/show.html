@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>基地展示</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-banner banner-ny-h" data-height='' style=''>
+            <div class="slick-slide">
+                <img class="cover-image" src="__StaticStyle__/img/banner9.jpg" sizes="(max-width: 767px) 767px" alt="樱桃种植基地">
+            </div>
+        </div>
+        <div class="met-column-nav ">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar-tile">
+                        <ul class="met-column-nav-ul invisible-xs">
+                            {foreach $showCate as $v}
+                            <li>
+                                <a href="{:url('index/show',['id'=>$v.id])}" class='link {if $id == $v.id}active{/if}'>
+                                    {$v.title}
+                                </a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="met-show animsition">
+            <div class="container">
+                <div class="row">
+                    <div class="met-editor lazyload clearfix">
+                        <div>
+                            {$showInfo.description}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {include file='public:footer'}
+    </body>
+
+</html>

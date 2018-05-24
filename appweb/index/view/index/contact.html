@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>联系我们</title>
+        <style>
+            .anchorBL,.BMap_cpyCtrl{
+                display:none;
+            }
+        </style>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-banner banner-ny-h" data-height='' style=''>
+            <div class="slick-slide">
+                <img class="cover-image" src="__StaticStyle__/img/banner17.jpg" sizes="(max-width: 767px) 767px" alt="联系我们">
+            </div>
+        </div>
+        <div class="met-column-nav ">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar-tile">
+                        <ul class="met-column-nav-ul invisible-xs">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="met-show animsition">
+            <div class="container">
+                <div class="row">
+                    <div class="met-editor lazyload clearfix">
+                        <div>
+                            <div style="text-align: center;">
+                                <span style="font-size:14px;">
+                                    地址：{$info.address}
+                                </span>
+                            </div>
+                            <p style="text-align: center;">
+                                <span style="font-size:14px;">
+                                    电话：{$info.contact}
+                                </span>
+                            </p>
+                            {if $info.fax}
+                            <p style="text-align: center;">
+                                <span style="font-size:14px;">
+                                    传真：{$info.fax}
+                                </span>
+                            </p>
+                            {/if}
+                            {if $info.email_num}
+                            <p style="text-align: center;">
+                                <span style="font-size:14px;">
+                                    邮编：{$info.email_num}
+                                </span>
+                            </p>
+                            {/if}
+                            <p style="text-align: center;">
+                                <span style="font-size:14px;">
+                                    网址：{$info.web_site}
+                                </span>
+                            </p>
+                            <div id="allmap" style="height:300px;width:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {include file='public:footer'}
+    </body>
+
+</html>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LyxlvGAqiQu9qzZ3ohCd0urcN3ibuFvL"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(116.807966,32.562704);
+    map.centerAndZoom(point,12);
+    // 创建地址解析器实例
+    var myGeo = new BMap.Geocoder();
+    // 将地址解析结果显示在地图上,并调整地图视野
+    myGeo.getPoint("安徽省淮南市寿县寿春镇", function(point){
+        if (point) {
+            map.centerAndZoom(point, 16);
+            map.addOverlay(new BMap.Marker(point));
+        }else{
+        }
+    }, "淮南市");
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>

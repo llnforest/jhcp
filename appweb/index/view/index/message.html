@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>在线留言</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-banner banner-ny-h" data-height='' style=''>
+            <div class="slick-slide">
+                <img class="cover-image" src="__StaticStyle__/img/banner1.jpg" sizes="(max-width: 767px) 767px" alt="在线留言">
+            </div>
+        </div>
+        <div class="met-column-nav ">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar-tile">
+                        <ul class="met-column-nav-ul invisible-xs">
+                            <li>
+                                <a href="about.html"​ class="link ">
+                                    公司简介
+                                </a>
+                            </li>
+                            <li>
+                                <a href='message.html' class='link active'>
+                                    在线留言
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="met-message animsition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="met-message-submit">
+                                <form  class="met-form met-form-validation"
+                                method="post">
+                                    <div class="form-group">
+                                        <div>
+                                            <input name='name' class='form-control' type='text' placeholder='姓名* '
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <input name='phone' class='form-control' type='text' placeholder='电话* '
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <input name='email' class='form-control' type='text' placeholder='邮箱 '
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <input name='address' class='form-control' type='text' placeholder='联系地址 '
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <textarea name='info' class='form-control' placeholder='留言内容*' rows='5'></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group margin-bottom-0">
+                                        <button id="submit" class="btn btn-primary btn-block btn-squared">
+                                            提交
+                                        </button>
+                                    </div>
+                                <!--</form>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {include file='public:footer'}
+        <script>
+            $(function(){
+                $("#submit").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('api/submitFeedback')}",
+                        data: $(".met-form").serialize(),
+                        dataType: "json",
+                        beforeSend: function () {
+                            // 禁用按钮防止重复提交
+                            $("#submit").attr({ disabled: "disabled" });
+                        },
+                        success: function(data){
+                            if(data.code == 1){
+                                alert(data.msg);
+                                $(".met-form input").val('')
+                                $(".met-form textarea").val('')
+                            }else{
+                                alert(data.msg);
+                            }
+                        },
+                        complete: function () {
+                            $("#submit").removeAttr("disabled");
+                        },
+                        error: function (data) {
+                            alert('网络异常')
+                        }
+                    });
+                })
+            })
+        </script>
+    </body>
+</html>

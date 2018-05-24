@@ -1,0 +1,50 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>资质荣誉</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-img animsition">
+            <div class="container">
+                <div class="row">
+                    <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4  met-page-ajax"
+                    data-scale='0.78947368421053'>
+                        {foreach $list as $v}
+                        <li class="widget ">
+                            <div class="cover overlay overlay-hover">
+                                <img class="cover-image overlay-scale" src="__ImagePath__{$v.url}"
+                                alt="{$v.title}" style='height:300px;' />
+                                <div class="overlay-panel overlay-fade overlay-background overlay-background-fixed text-center vertical-align">
+                                    <div class="vertical-align-middle">
+                                        <div class="widget-time widget-divider">
+                                            <span>
+                                                {$v.get_date}
+                                            </span>
+                                        </div>
+                                        <h3 class="widget-title margin-bottom-20 font-weight-300">
+                                            {$v.title}
+                                        </h3>
+                                        <button type="button" class="btn btn-outline btn-squared btn-inverse met-img-showbtn"
+                                        data-imglist="{$v.title}*__ImagePath__{$v.url}|">
+                                            浏览
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    <div class="pagination-wrap">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file='public:footer'}
+    </body>
+
+</html>

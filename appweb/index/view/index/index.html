@@ -1,0 +1,244 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>首页</title>
+    </head>
+    
+    <body class="met-navfixed">
+        {include file='public:header'}
+        <div class="met-banner" data-height='' style=''>
+            {foreach $bannerList as $v}
+            <div class="slick-slide">
+                <img class="cover-image" src="__ImagePath__{$v.url}" sizes="(max-width: 767px) 767px" alt="{$v.name}">
+            </div>
+            {/foreach}
+        </div>
+        <div class="met-index-hot met-index-body" id="hot">
+            <div class="title">
+                <h2 class="">
+                    产品介绍
+                </h2>
+                <div class="home-line" style="background:url(__StaticStyle__/img/1514365123.png)center no-repeat;">
+                </div>
+                <p class="desc">
+                    我们用心为您做的更好
+                </p>
+            </div>
+            <div class="container">
+                <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 " data-scale=''>
+                    <!--string(7) "product" -->
+                    {volist name="productList" id="v" offset="0" length="4"}
+                    <li class="">
+                        <div class="widget widget-article widget-shadow">
+                            <div class="widget-header cover overlay overlay-hover">
+                                <img class="cover-image overlay-scale" src="__ImagePath__{$v.url}"
+                                alt="">
+                            </div>
+                            <div class="widget-body">
+                                <h3 class="widget-title">
+                                    {$v.title}
+                                </h3>
+                                <p class="des">
+                                    {$v.content}
+                                </p>
+                                <div class="widget-body-footer">
+                                    <a class="btn btn-info waves-effect waves-light" href="{:url('index/productDetail',['id'=>$v.id])}">
+                                        查看详情
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+                <div class="hot-btns">
+                    <a href="{:url('index/product')}"​>
+                        查看更多
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--string(4) "news" string(4) "news" -->
+        <div class="met-index-imgnews met-index-body" id="news">
+            <div class="title">
+                <h2 class="">
+                    新闻中心
+                </h2>
+                <div class="home-line" style="background:url(__StaticStyle__/img/1514365123.png)center no-repeat;">
+                </div>
+                <p class="desc">
+                </p>
+            </div>
+            <div class="container">
+                <div class="clearfix" data-plugin="matchHeight">
+                    {volist name="newsCate" id="item" offset="0" length="2" key="news_k"}
+                    {if $news_k == 1}
+                    <div class="col-md-7 col-xs-12 left-news">
+                        <div class="sec-title">
+                            <h3>
+                                {$item.name}
+                            </h3>
+                            <span class="line">
+                            </span>
+                            <a href="{:url('index/news',['cate_id'=>$item.id])}" title="{$item.name}">
+                                更多
+                            </a>
+                        </div>
+                        <div class="slick" id="imgnews-slick">
+                            {volist name="newsList[$item.id]" id="news_fir" offset="0" length="5" key="news_fir_k"}
+                            <div>
+                                <a href="{:url('index/newsDetail',['id'=>$news_fir.id])}" title="{$news_fir.title}"
+                                target='_self'>
+                                    <div class="text">
+                                        <span class="icon">
+                                            <img src="__ImagePath__{$news_fir.url}" alt="{$news_fir.title}">
+                                        </span>
+                                        <h3>
+                                            <span>
+                                                0{$news_fir_k}
+                                            </span>
+                                            {$news_fir.title}
+                                        </h3>
+                                        <p class="des">
+                                            {$news_fir.content}
+                                        </p>
+                                    </div>
+                                    <img class="cover-image" src="__ImagePath__{$news_fir.url}" sizes="(max-width: 991px) 991px" alt="{$news_fir.title}">
+                                </a>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                    {else}
+                    <div class="col-md-5 col-xs-12 right-news news-ul">
+                        <div class="sec-title">
+                            <h3>
+                                {$item.name}
+                            </h3>
+                            <span class="line">
+                            </span>
+                            <a href="{:url('index/news',['cate_id'=>$item.id])}" title="{$item.name}">
+                                更多
+                            </a>
+                        </div>
+                        {volist name="newsList[$item.id]" id="news_sec" offset="0" length="9" key="news_sec_k"}
+                        <li class="">
+                            <span class="badge badge-radius badge-default color">
+                                {$news_sec_k}
+                            </span>
+                            <a href="{:url('index/newsDetail',['id'=>$news_fir.id])}" title="{$news_sec.title}"
+                            target='_self'>
+                                {$news_sec.title}
+                            </a>
+                            <span>
+                                [{:getMonthDate($news_sec.create_time)}]
+                            </span>
+                        </li>
+                        {/volist}
+                    </div>
+                    {/if}
+                    {/volist}
+                </div>
+                <div class="news-bg">
+                    <div class="bg" style="background:url(__StaticStyle__/img/1514367423.jpg)center no-repeat;">
+                        <div class="text">
+                            <h3>
+                                扫一扫关注微信！
+                            </h3>
+                            <p>
+                                每周我们会通过微信给您推送苗木的最新知识，让您随时随地掌握苗木的一线知识。您也可以通过微信与我们交流。分享您育苗中遇到的难题，让我们第一时间给您解决
+                            </p>
+                            <img src="__ImagePath__{$info.qr_url}" alt="二维码">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="met-index-product met-index-body" id='product'>
+            <div class="title">
+                <h2 class="">
+                    草坪种类
+                </h2>
+                <div class="home-line" style="background:url(__StaticStyle__/img/1514365123.png)center no-repeat;">
+                </div>
+                <p class="desc ">
+                </p>
+            </div>
+            <div class="container">
+                <div class=''>
+                    <ul class="nav nav-tabs">
+                        {foreach $productCate as $v}
+                        <li>
+                            <a href="{:url('index/product',['cate_id'=>$v.id])}" title="{$v.name}">
+                                <h3>
+                                    {$v.name}
+                                </h3>
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <ul class="blocks-2 blocks-sm-2 blocks-md-4 blocks-xlg-4 no-space" id="indexprolist"
+                data-scale='0.75117370892019'>
+                    {volist name="productList" id="v" offset="4" length="8"}
+                    <li>
+                        <div class="widget">
+                            <figure class="widget-header cover">
+                                <a href="{:url('index/productDetail',['id'=>$v.id])}" title="{$v.title}" target='_self'>
+                                    <img class="cover-image" src="__ImagePath__{$v.url}"
+                                    style='height:300px;' alt="{$v.title}">
+                                </a>
+                            </figure>
+                            <h4 class="widget-title">
+                                <a href="{:url('index/productDetail',['id'=>$v.id])}" title="{$v.title}" target='_self'>
+                                    {$v.title}
+                                </a>
+                            </h4>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        <div class="met-index-about met-index-body" id="about">
+            <div class="title">
+                <h2 class="">
+                    基地展示
+                </h2>
+                <div class="home-line" style="background:url(__StaticStyle__/img/1514365123.png)center no-repeat;">
+                </div>
+                <p class="desc">
+                </p>
+            </div>
+            <div class="container">
+                <div class="about-list">
+                    {volist name="showList" id="v" offset="0" length="5" key="show_key"}
+                    <div>
+                        <div class="col-md-6 img">
+                            <img src="__ImagePath__{$v.url}" alt="{$v.title}">
+                        </div>
+                        <div class="col-md-6 text">
+                            <h3>
+                                {$v.title}
+                                <span>
+                                    / 0{$show_key}
+                                </span>
+                            </h3>
+                            <p>
+                                {$v.content}
+                            </p>
+                            <a href="{:url('index/show',['id'=>$v.id])}" title="{$v.title}" target='_self'
+                            class="btn btn-info waves-effect waves-light">
+                                查看更多
+                            </a>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        {include file='public:footer'}
+    </body>
+</html>

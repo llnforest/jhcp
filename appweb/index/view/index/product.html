@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        {include file='public:head'}
+        <title>产品中心</title>
+    </head>
+    
+    <body class="met-navfixed">
+    {include file='public:header'}
+        <div class="met-banner banner-ny-h" data-height='' style=''>
+            <div class="slick-slide">
+                <img class="cover-image" src="__StaticStyle__/img/banner4.jpg" sizes="(max-width: 767px) 767px" alt="产品中心">
+            </div>
+        </div>
+        <div class="met-column-nav bordernone">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar-tile">
+                        <ul class="met-column-nav-ul invisible-xs">
+                            {foreach $productCate as $v}
+                            <li>
+                                <a href="{:url('index/product',['cate_id'=>$v.id])}" class="link {if !empty($cate_id) && $cate_id == $v.id}active{/if}">
+                                    {$v.name}
+                                </a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                    <div class="product-search">
+                        <form name="formsearch" action="{:url('index/product',['cate_id'=>$cate_id])}">
+                            <div class="form-group">
+                                <div class="input-search">
+                                    <button type="submit" class="input-search-btn">
+                                        <i class="icon wb-search" aria-hidden="true">
+                                        </i>
+                                    </button>
+                                    <input type="text" class="form-control" name="title" value="" placeholder="Search">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="met-product animsition type-3">
+            <div class="container-fluid">
+                <ul class="blocks-2 blocks-sm-2 blocks-md-4 blocks-xlg-4  met-page-ajax met-grid"
+                id="met-grid" data-scale='0.75117370892019'>
+                    {foreach $list as $v}
+                    <li class=" shown">
+                        <div class="widget widget-shadow">
+                            <figure class="widget-header cover">
+                                <a href="{:url('index/productDetail',['id'=>$v.id])}" title="{$v.title}" target='_self'>
+                                    <img class="cover-image" src="__ImagePath__{$v.url}" alt="{$v.title}"
+                                    style='height:200px;'>
+                                </a>
+                            </figure>
+                            <div class="widget-body">
+                                <h4 class="widget-title">
+                                    {$v.title}
+                                </h4>
+                                <p class="des">
+                                    {$v.content}
+                                </p>
+                                <div class="widget-body-footer">
+                                    <div class="widget-actions pull-right">
+                                        <a href="{:url('index/productDetail',['id'=>$v.id])}" title="{$v.title}">
+                                            <i class="icon wb-eye" aria-hidden="true">
+                                            </i>
+                                            <span>
+                                                {$v.view_count}
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <a href="{:url('index/productDetail',['id'=>$v.id])}" title="{$v.title}" target='_self'
+                                    class="btn btn-outline btn-primary btn-squared">
+                                        查看详情
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+                <div class="pagination-wrap">
+                    {$page}
+                </div>
+            </div>
+        </div>
+        {include file='public:footer'}
+    </body>
+
+</html>
