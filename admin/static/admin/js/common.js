@@ -1,5 +1,5 @@
 var set_time;
-var sec = 3e3;
+var sec = 1000;
 //弹出遮罩层
 layui.use('layer', function(){
     layer = layui.layer;
@@ -412,7 +412,7 @@ function spanPost(_this,url,data){
                         }else{
                             location.reload();
                         }
-                    },3e3)
+                    },sec)
                 }else if(json.code == 0){
                     $('#alert').html(alertDanger(json.msg));
                 }

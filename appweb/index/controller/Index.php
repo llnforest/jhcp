@@ -26,10 +26,18 @@ class Index extends BaseController{
     public function index(){
         $this->data['productList'] = BaseProductModel::alias('a')
             ->join('tp_base_product_image b','a.id = b.product_id','left')
+            ->where(['a.is_recommend' => 0])
             ->field('a.id,a.title,a.content,b.url')
             ->order('a.sort asc,b.sort asc')
             ->group('b.product_id')
-            ->limit(12)->select();//产品列表
+            ->limit(8)->select();//产品列表
+        $this->data['recommendProductList'] = BaseProductModel::alias('a')
+            ->join('tp_base_product_image b','a.id = b.product_id','left')
+            ->where(['a.is_recommend' => 1])
+            ->field('a.id,a.title,a.content,b.url')
+            ->order('a.sort asc,b.sort asc')
+            ->group('b.product_id')
+            ->limit(4)->select();//产品列表
         $newsList = BaseNewsModel::alias('a')
             ->join('tp_base_category b','a.cate_id = b.id','left')
             ->field('a.id,a.title,a.content,a.url,a.create_time,a.cate_id')
@@ -61,6 +69,7 @@ class Index extends BaseController{
     public function product(){
         $page = !empty($this->param['page'])?$this->param['page']:0;
         $where  = getWhereParam(['a.title'=>'like','a.cate_id'],$this->param);
+        $where['is_recommend'] = 0;
         $this->data['list'] = BaseProductModel::alias('a')
             ->where($where)
             ->field('a.id,a.title,a.content,a.view_count,b.url')
@@ -85,7 +94,7 @@ class Index extends BaseController{
         $this->data['imgList'] = BaseProductImageModel::where(['product_id'=>$this->id])->order('sort asc')->limit(6)->select();
         $this->data['recommend'] = BaseProductModel::alias('a')
             ->join('tp_base_product_image b','a.id = b.product_id','left')
-            ->where(['a.id'=>['neq',$this->id]])
+            ->where(['a.id'=>['neq',$this->id],'a.is_recommend'=>0])
             ->field('a.id,a.title,b.url')
             ->group('b.product_id')
             ->order('rand()')

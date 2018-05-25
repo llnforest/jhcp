@@ -90,12 +90,17 @@ class Product extends BaseController{
     }
 
     // 删除产品
-    public function productDelete(){
-        if($this->request->isPost()) {
+    public function productDelete()
+    {
+        if ($this->request->isPost()) {
             $result = BaseProductModel::get($this->id);
             if (empty($result)) return ['code' => 0, 'msg' => lang('sys_param_error')];
-            @unlink(Config::get('upload.path').$result['url']);
-            return operateResult($result->delete(),'product/index','del');
+            $imgList = BaseProductImageModel::all(['product_id' => $this->id]);
+            foreach ($imgList as $v) {
+                @unlink(Config::get('upload.path') . $v['url']);
+            }
+            BaseProductImageModel::destroy(['product_id' => $this->id]);
+            return operateResult($result->delete(), 'product/index', 'del');
         }
         return ['code'=>0,'msg'=>lang('sys_method_error')];
     }
@@ -107,6 +112,17 @@ class Product extends BaseController{
             if (empty($result)) return ['code' => 0, 'msg' => lang('sys_param_error')];
             $data = [$this->param['name'] => $this->param['data']];
             return inputResult($result->save($data),'sort');
+        }
+        return ['code'=>0,'msg'=>lang('sys_method_error')];
+    }
+
+    // 操作产品
+    public function switchProduct(){
+        if($this->request->isPost()) {
+            $result = BaseProductModel::get($this->id);
+            if (empty($result)) return ['code' => 0, 'msg' => lang('sys_param_error')];
+            $data = [$this->param['name'] => $this->param['data']];
+            return switchResult($result->save($data),'status');
         }
         return ['code'=>0,'msg'=>lang('sys_method_error')];
     }

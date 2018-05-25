@@ -32,6 +32,7 @@
             <tr>
                 <th width="80">标题</th>
                 <th width="80">分类</th>
+                <th width="80">推荐</th>
                 <th width="80">排序<span order="a.sort" class="order-sort"> </span></th>
                 <th width="80">操作</th>
             </tr>
@@ -41,6 +42,13 @@
                 <tr>
                     <td>{$v.title}</td>
                     <td>{$v.name}</td>
+                    <td class="layui-form">
+                        {if condition="checkPath('product/switchProduct',['id'=>$v.id])"}
+                        <input type="checkbox" data-name="is_recommend" data-url="{:url('product/switchProduct',['id'=>$v.id])}" lay-skin="switch" lay-text="是|否" {$v.is_recommend == 1 ?'checked':''} data-value="1|0">
+                        {else}
+                        {$v.is_recommend == 1?'<span class="blue">是</span>':'<span class="red">否</span>'}
+                        {/if}
+                    </td>
                     <td>
                         {if condition="checkPath('product/inputProduct')"}
                         <input class="form-control change-data short-input"  post-id="{$v.id}" post-url="{:url('product/inputProduct')}" data-name="sort" value="{$v.sort}">
