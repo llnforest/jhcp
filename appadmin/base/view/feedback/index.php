@@ -39,8 +39,8 @@
                     <td>{$v.phone}</td>
                     <td>{$v.email}</td>
                     <td>{$v.address}</td>
-                    <td>{if $v.content}<span class="span-primary" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top"
-                                                 data-content="{$v.content}">明细</span>{/if}</td>
+                    <td>{if $v.info}<span class="span-primary" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top"
+                                                 data-content="{$v.info}">明细</span>{/if}</td>
                     <td>{$v.create_time}</td>
                     <td>
                         {if condition="checkPath('feedback/feedbackDelete',['id'=>$v['id']])"}
