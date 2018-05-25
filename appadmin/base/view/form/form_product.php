@@ -9,7 +9,7 @@
                     <div class="layui-form select">
                         <select name="cate_id" class="form-control">
                             {foreach $cateList as $item}
-                            <option value="{$item.id}" {if input('cate_id') == $item.id}selected{/if}>{$item.name}</option>
+                            <option value="{$item.id}" {$info.cate_id == $item.id?'selected':''}>{$item.name}</option>
                             {/foreach}
                         </select>
                     </div>
