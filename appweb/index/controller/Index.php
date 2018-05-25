@@ -67,7 +67,6 @@ class Index extends BaseController{
 
     //产品中心
     public function product(){
-        $page = !empty($this->param['page'])?$this->param['page']:0;
         $where  = getWhereParam(['a.title'=>'like','a.cate_id'],$this->param);
         $where['is_recommend'] = 0;
         $this->data['list'] = BaseProductModel::alias('a')
@@ -116,7 +115,6 @@ class Index extends BaseController{
 
     //资质荣誉
     public function honor(){
-        $page = !empty($this->param['page'])?$this->param['page']:0;
         $this->data['list'] = BaseHonorModel::order('sort asc')
             ->paginate($this->config_page,'',['query'=>$this->param]);
         $this->data['page']   = $this->data['list']->render();
@@ -126,7 +124,6 @@ class Index extends BaseController{
 
     //新闻中心
     public function news(){
-        $page = !empty($this->param['page'])?$this->param['page']:0;
         $where  = getWhereParam(['title'=>'like','cate_id'],$this->param);
         $this->data['list'] = BaseNewsModel::where($where)
             ->order('sort asc')
@@ -141,6 +138,7 @@ class Index extends BaseController{
     //新闻详情
     public function newsDetail(){
         $this->data['newsInfo'] = BaseNewsModel::get($this->id);
+        if(empty($this->data['newsInfo'])) $this->redirect('404');
         BaseNewsModel::where(['id'=>$this->id])->setInc('view_count',1);
         $this->data['recommend'] = BaseNewsModel::order('rand()')->limit(5)->select();
         $where = getWhereParam(['cate_id'],$this->param);

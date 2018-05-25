@@ -86,6 +86,7 @@
                                 更多
                             </a>
                         </div>
+                        {if !empty($newsList[$item.id])}
                         <div class="slick" id="imgnews-slick">
                             {volist name="newsList[$item.id]" id="news_fir" offset="0" length="5" key="news_fir_k"}
                             <div>
@@ -110,6 +111,7 @@
                             </div>
                             {/volist}
                         </div>
+                        {/if}
                     </div>
                     {else}
                     <div class="col-md-5 col-xs-12 right-news news-ul">
@@ -123,6 +125,7 @@
                                 更多
                             </a>
                         </div>
+                        {if !empty($newsList[$item.id])}
                         {volist name="newsList[$item.id]" id="news_sec" offset="0" length="9" key="news_sec_k"}
                         <li class="">
                             <span class="badge badge-radius badge-default color">
@@ -137,6 +140,7 @@
                             </span>
                         </li>
                         {/volist}
+                        {/if}
                     </div>
                     {/if}
                     {/volist}
