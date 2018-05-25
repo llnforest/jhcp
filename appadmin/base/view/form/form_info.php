@@ -73,7 +73,7 @@
             <tr>
                 <th>seo描述</th>
                 <td class="layui-form">
-                    <textarea class="form-control text" type="text" name="seo_des" value="{$info.seo_des??''}" placeholder="seo描述"></textarea>
+                    <textarea class="form-control text" type="text" name="seo_des" placeholder="seo描述">{$info.seo_des??''}</textarea>
                 </td>
             </tr>
             <tr>
