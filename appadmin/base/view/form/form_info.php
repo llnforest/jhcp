@@ -64,7 +64,18 @@
                     <input class="form-control text" type="text" name="fax" value="{$info.fax??''}" placeholder="传真号码">
                 </td>
             </tr>
-
+            <tr>
+                <th>seo关键词</th>
+                <td class="layui-form">
+                    <input class="form-control text" type="text" name="seo_key" value="{$info.seo_key??''}" placeholder="seo关键词">
+                </td>
+            </tr>
+            <tr>
+                <th>seo描述</th>
+                <td class="layui-form">
+                    <textarea class="form-control text" type="text" name="seo_des" value="{$info.seo_des??''}" placeholder="seo描述"></textarea>
+                </td>
+            </tr>
             <tr>
                 <th>logo图片</th>
                 <td>
