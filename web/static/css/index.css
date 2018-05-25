@@ -32321,3 +32321,99 @@ body.met-navfixed-langlist {
 	display: block !important;
 }
 }
+/*右侧联系固定框*/
+#contact{
+	width: 50px;
+	height: 95px;
+	position: fixed;
+	margin:auto;
+	bottom: 0px;
+	top: 0px;
+	right: 3px;
+	z-index: 66;
+}
+#contact .box ul li {
+	width: 41px;
+	display: block;
+	height: 41px;
+	padding: 2px;
+	overflow: hidden;
+	cursor: pointer;
+	margin-top: 2px;
+}
+
+#contact .weixin {
+	background: url(../img/qqtu2.png) no-repeat;
+	background-position: 0 87%;
+	width:100px;
+	height:50px;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+}
+#contact .weixin:hover {
+	background: url(../img/qqtu.png) no-repeat;
+}
+
+#contact .idea {
+	background: url(../img/duanxintu2.png) no-repeat;
+	background-position: 0 43%;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+}
+#contact .idea:hover {
+	background: url(../img/duanxintu.png) no-repeat;
+}
+#contact .idea:hover .app-logo1 {
+	width: 102px;
+	height: 101px;
+	border:1px solid #9bcd6c;
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+
+}
+#contact .app-logo1 {
+	background: url(../img/1524277920.png) no-repeat;
+	background-position: 0 26%;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: -17px;
+	left: -107px;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+}
+
+#contact .weixin:hover .weixin-logo {
+	width: 105px;
+	height: 41px;
+	line-height:41px;
+	border:1px solid #9bcd6c;
+	color:#9bcd6c;
+
+}
+#contact .weixin-logo {
+	padding-left: 5px;
+	cursor:pointer;
+	display:inline-block;
+	background:#eeeeec;
+	background-position: 0 0;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: 2px;
+	left: -110px;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+}

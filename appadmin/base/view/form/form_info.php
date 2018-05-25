@@ -39,6 +39,20 @@
                 </td>
             </tr>
             <tr>
+                <th>QQ号码</th>
+                <td>
+                    <input class="form-control text" type="text" name="qq" value="{$info.qq??''}" placeholder="QQ号码">
+                    <span class="form-required">*</span>
+                </td>
+            </tr>
+            <tr>
+                <th>地图坐标</th>
+                <td>
+                    <input class="form-control text" type="text" name="map_point" value="{$info.map_point??''}" placeholder="地图坐标">
+                    <span class="form-required">*</span>
+                </td>
+            </tr>
+            <tr>
                 <th>邮编号码</th>
                 <td class="layui-form">
                     <input class="form-control text" type="text" name="email_num" value="{$info.email_num??''}" placeholder="邮编号码">
@@ -50,6 +64,7 @@
                     <input class="form-control text" type="text" name="fax" value="{$info.fax??''}" placeholder="传真号码">
                 </td>
             </tr>
+
             <tr>
                 <th>logo图片</th>
                 <td>
@@ -58,18 +73,16 @@
                         <input class="image" type="hidden" name="logo_url" value="{$info.logo_url??''}">
                         <img class="mini-image {$info.logo_url?'':'hidden'}" data-path="__ImagePath__" src="{$info.logo_url?'__ImagePath__'.$info.logo_url:''}">
                     </button>
-                    <span class="red block">(图片建议大小 120*40)</span>
                 </td>
             </tr>
             <tr>
-                <th>二维码</th>
+                <th>微信二维码</th>
                 <td>
                     <button name="image" type="button" class="layui-btn upload" lay-data="{'url': '{:url('index/upload/image',['type'=>'info'])}'}">
                         <i class="layui-icon">&#xe67c;</i>上传二维码图片
                         <input class="image" type="hidden" name="qr_url" value="{$info.qr_url??''}">
                         <img class="mini-image {$info.qr_url?'':'hidden'}" data-path="__ImagePath__" src="{$info.qr_url?'__ImagePath__'.$info.qr_url:''}">
                     </button>
-                    <span class="red block">(图片建议大小 192*192)</span>
                 </td>
             </tr>
             <tr>
@@ -81,7 +94,6 @@
             <tr>
                 <td colspan="2" class="text-center">
                     <button type="button" class="btn btn-success form-post " >保存</button>
-                    <a class="btn btn-default active" href="JavaScript:history.go(-1)">返回</a>
                 </td>
             </tr>
         </tbody>

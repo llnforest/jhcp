@@ -11,7 +11,7 @@ use think\Validate;
 
 
 class Info extends BaseController{
-    private $roleValidate = ['contact|全国热线' => 'require','web_site|企业官网' => 'require|url','address|企业地址' => 'require','power|版权归属'=>'require','case_info|备案信息'=>'require','logo_url|logo图片' => 'require','qr_url|二维码图片' => 'require'];
+    private $roleValidate = ['contact|全国热线' => 'require','web_site|企业官网' => 'require|url','qq|QQ号码'=>'require','map_point|地图坐标'=>'require','address|企业地址' => 'require','power|版权归属'=>'require','case_info|备案信息'=>'require','logo_url|logo图片' => 'require','qr_url|二维码图片' => 'require'];
     //构造函数
     public function __construct(){
         parent::__construct();

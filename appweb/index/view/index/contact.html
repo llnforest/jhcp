@@ -76,12 +76,12 @@
 <script type="text/javascript">
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    var point = new BMap.Point(116.807966,32.562704);
+    var point = new BMap.Point({$info.map_point});
     map.centerAndZoom(point,12);
     // 创建地址解析器实例
     var myGeo = new BMap.Geocoder();
     // 将地址解析结果显示在地图上,并调整地图视野
-    myGeo.getPoint("安徽省淮南市寿县寿春镇", function(point){
+    myGeo.getPoint("{$info.address}", function(point){
         if (point) {
             map.centerAndZoom(point, 16);
             map.addOverlay(new BMap.Marker(point));
