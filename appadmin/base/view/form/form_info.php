@@ -59,9 +59,9 @@
                 </td>
             </tr>
             <tr>
-                <th>传真号码</th>
+                <th>手机号码</th>
                 <td class="layui-form">
-                    <input class="form-control text" type="text" name="fax" value="{$info.fax??''}" placeholder="传真号码">
+                    <input class="form-control text" type="text" name="fax" value="{$info.fax??''}" placeholder="手机号码">
                 </td>
             </tr>
             <tr>

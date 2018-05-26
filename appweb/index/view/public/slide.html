@@ -10,5 +10,10 @@
             <li class="idea">
                 <div class="app-logo1" style="background: url(__ImagePath__<?php echo str_replace('\\','/',$info['qr_url']);?>) no-repeat center;background-size:100%;"></div>
             </li>
+            <li class="phone">
+                <a class="phone-logo" href="tel:{$info.contact|str_replace='-','',###}">
+                    {$info.contact}
+                </a>
+            </li>
         </ul>
     </div>
