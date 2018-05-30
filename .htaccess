@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+       RewriteEngine On
+        RewriteBase /
+       # 绑定music.morfans.cn 到子目录music
+        RewriteCond %{HTTP_HOST} ^hnjhcp\.com$ [NC]
+        RewriteCond %{REQUEST_URI} !^/web/
+        RewriteRule ^(.*)$ web/$1?Rewrite [L,QSA]
+        #可以绑定多个, 只需重复上三行代码并更改一下域名、目录名 就OK了
+</IfModule>
