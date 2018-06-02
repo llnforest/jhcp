@@ -4037,7 +4037,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     padding: 6px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: #333;
+    color: #777;
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd
@@ -4065,7 +4065,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     border-color: #1abc9c
 }
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
-    color: #777;
+    color: #ccd5db;
     cursor: not-allowed;
     background-color: #fff;
     border-color: #ddd
