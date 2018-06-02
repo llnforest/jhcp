@@ -15,7 +15,7 @@ class BaseController extends Controller
 {
 
     protected $admin;
-    protected $config_page = 50;
+    protected $config_page = 20;
     protected $param;
     protected $id;
     public function __construct()

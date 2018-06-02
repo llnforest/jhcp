@@ -4022,7 +4022,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     display: inline-block;
     padding-left: 0;
     margin: 20px 0;
-    border-radius: 4px
+    border-radius: 4px;
+    line-height:34px;
+}
+.pagination>li:last-child{
+    margin-right:10px;
 }
 .pagination>li {
     display: inline
@@ -4033,7 +4037,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     padding: 6px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: #337ab7;
+    color: #333;
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd
@@ -4049,7 +4053,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
     z-index: 3;
-    color: #23527c;
+    color: #1abc9c;
     background-color: #eee;
     border-color: #ddd
 }
@@ -4057,8 +4061,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     z-index: 2;
     color: #fff;
     cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7
+    background-color: #1abc9c;
+    border-color: #1abc9c
 }
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
     color: #777;
