@@ -99,9 +99,9 @@ class Bootstrap extends Paginator
             $html .= $this->getUrlLinks($block['last']);
         }
         // 添加跳转框
-//        if ($this->options['input']) {
-//            $html .= '跳转至<input type="text" name="page" class="pageInput">页';
-//        }
+        if ($this->options['input']) {
+            $html .= '跳转至<input type="text" name="page" class="pageInput">页';
+        }
         if ($this->options['all']) {
             $html .= ' 共'.$this->total.'条数据';
         }

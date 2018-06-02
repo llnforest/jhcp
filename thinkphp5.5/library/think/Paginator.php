@@ -55,7 +55,6 @@ abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, J
     public function __construct($items, $listRows, $currentPage = null, $total = null, $simple = false, $options = [])
     {
         $this->options = array_merge($this->options, $options);
-
         $this->options['path'] = '/' != $this->options['path'] ? rtrim($this->options['path'], '/') : $this->options['path'];
 
         $this->simple   = $simple;

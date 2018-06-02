@@ -29,6 +29,7 @@ class BaseController extends Controller
         $auth->noNeedCheckRules = ['index/index/index','index/index/home'];
         $auth->log              = true;                 // v1.1版本  日志开关默认true
         $user                   = $auth::is_login();
+        $this->config_page = Config::get('paginate.list_rows');
         if($user){//用户登录状态
             $this->admin = $user;
             if(!$auth->auth()){

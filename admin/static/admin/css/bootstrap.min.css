@@ -4096,6 +4096,15 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px
 }
+.pagination .pageInput{
+    height: 34px;
+    border: 1px solid #ddd;
+    width: 30px;
+    margin: 0 5px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 3px;
+}
 .pager {
     padding-left: 0;
     margin: 20px 0;

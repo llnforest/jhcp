@@ -87,7 +87,6 @@ a:hover, a:focus { color: #1dd2af;text-decoration: underline;}
 .span-primary{color: #1abc9c; cursor: pointer;}
 .span-primary:hover{text-decoration: underline}
 
-.pagination .pageInput{ height: 33px; padding:10px 0; width: 30px;}
 .span-post{cursor:pointer;color:#1abc9c;}
 /*开关*/
 input[type="checkbox"].iswitch-lg.iswitch-info:checked {
