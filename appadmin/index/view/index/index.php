@@ -4,7 +4,7 @@
    <span id="right_tools_clearcache" title="清除缓存" onclick="javascript:openapp('<?php echo Url('publics/clear')?>','index_clearcache','清除缓存');"><i class="fa fa-trash-o right_tool_icon"></i></span>
     <span id="refresh_wrapper" title="REFRESH_CURRENT_PAGE" ><i class="fa fa-refresh right_tool_icon"></i></span> </div>
 <!--head-->
-
+<!--顶部-->
 <div class="navbar">
     <div class="navbar-inner">
 
@@ -15,7 +15,6 @@
             </a>
             <div class="pull-left nav_shortcuts" >
             </div>
-            <!--顶部-->
             <ul id="myTabs" class="nav simplewind-nav pull-lift" style="margin-left: 48px;">
                 {$menu.menuName}
             </ul>
